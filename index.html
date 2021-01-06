@@ -1,0 +1,414 @@
+<?php $vUp = 14.41?>
+<!DOCTYPE html>
+<!-- if IE 9 html.ie9(lang='en', ng-app='credibal')-->
+<!--if (gt IE 9)|!(IE)| if (gt IE 9)|!(IE)| if (gt IE 9)|!(IE)| if (gt IE 9)|!(IE)| if (gt IE 9)|!(IE)| if (gt IE 9)|!(IE)| if (gt IE 9)|!(IE)| if (gt IE 9)|!(IE)| if (gt IE 9)|!(IE)| [if (gt IE 9)|!(IE)]-->
+<html lang="en" ng-app="credibal">
+<!-- <![endif]-->
+
+<head>
+   <meta charset="utf-8">
+   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+   <meta name="description" content="{{app.description}}">
+   <meta name="keywords" content="Donations , Non-profits , Oraganizations , Contacts , Transactions , Reports , donors , accounts">
+   <link rel="shortcut icon" href="app/img/favicon.ico" type="image/x-icon">
+   <title data-ng-bind="pageTitle()"></title>
+   <!-- build:css app/css/application.css-->
+    <!-- <link rel="stylesheet" href="app/css/bootstrap.css?v=1">
+   <link rel="stylesheet" href="app/css/styles.css?v=1">
+   <link rel="stylesheet" href="app/css/animations.css?v=1">
+   <link rel="stylesheet" href="app/css/bicon.min.css?v=1"> -->
+    
+    <!-- <link rel="stylesheet" href="app/css/styles.css?v=1"> -->
+   <link rel="stylesheet" href="app/css/anim-bic-btstrp-styl-combined.css">
+
+   <!-- <link rel="stylesheet" href="app/css/donateclearly.css?v=1">
+   <link rel="stylesheet" href="app/css/loginregister.css?v=1"> -->
+   <link rel="stylesheet" href="app/css/combined-css-module.css">
+
+    <script>
+      var verconf=<?=$vUp ?>
+    </script>
+
+   <!-- endbuild-->
+</head>
+
+<body ng-clok="" ng-class="{ 'layout-fixed' : app.layout.isFixed, 'layout-boxed' : app.layout.isBoxed, 'layout-dock' : app.layout.isDocked, 'layout-material': app.layout.isMaterial, 'aside-offscreen' : app.sidebar.isOffscreen, 'footer-hidden': app.footer.hidden, 'in-app': !$state.includes('page')}"
+class="layout-fixed aside-offscreen">
+   <!-- <toaster-container></toaster-container>-->
+    <toaster-container toaster-options="    {'close-button':{ 'toast-warning': true, 'toast-error': false } }"></toaster-container>
+<div id="preLoader">
+  <div style="width:100px; margin: 0 auto;">
+    <img  src="app/img/ajax-loader.gif" style="padding-bottom: 10px;">
+    <span>Loading ...</span>
+  </div>
+</div>
+  
+  <div ng-controller="panelsController">
+    <div data-ui-view="" data-autoscroll="false" ng-controller="CoreController" class="app-container small-system" id="corController" ng-click="closeMenuSpecial();closeConfigPanal();">
+    </div>
+  </div>
+   <!-- Settings-->
+   <!-- <div ng-include="'templates/settings.html'" ng-class="{'visible': showSettings}" ng-init="showSettings = false" class="settings-wrapper"></div> -->
+   <!-- End Settings-->
+   <!-- Layer Morph-->
+   <div class="layer-morph-overlay">
+      <div class="layer-morph-inner bg-info"></div>
+   </div>
+   <div layer-morph-close="" class="layer-morph-close">
+      <em class="icon-cross"></em>
+   </div>
+   <div class="layer-morph-container bg-info">
+      <div class="layer-morph-wrapper">
+         <!-- <div id="layer-search" ng-include="'templates/layer-search.html'" class="layer-morph"></div> -->
+         <div class="layer-morph-footer">Donateclearly</div>
+      </div>
+   </div>
+
+<footer id="footer" class="footer" style="display: none;">
+<div class="footer-top">
+  <div class="container">
+    <div class="row">
+      <div class="col-md-12 white-text">
+        <h4 style="margin: 0px !important">Credibal</h4>
+        <p>25 Broadway, 9th Floor</p>
+        <p>New York, NY 10004</p>
+      </div>
+    </div>
+    <div class="row" style="margin-top: 20px;">
+      <div class="col-md-12">
+        <ul class="social">
+          <li><a target="_blank" href="https://www.facebook.com/credibal/"><i class="bi bi-facebook"></i></a></li>
+          <li><a target="_blank" href="https://www.facebook.com/credibal/"><i class="bi bi-twitter"></i></a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="row" style="margin-top: 20px;">
+      <div class="col-md-6">
+        <p>Made in New York City with <i style="color: red;" class="bi bi-love"></i></p>
+      </div>
+      <div class="col-md-6 text-right hidden-xs-down">
+        <p>© 2018 Codenito, Inc.  All rights reserved. <!-- <a href="#">Privacy Policy</a> --></p>
+      </div>
+    </div>
+  </div>
+</div>
+</footer>
+   <!-- End Layer Morph-->
+   <script>
+  var height = screen.height;
+  var preLoader = document.getElementById("preLoader");
+  height = parseInt(height);
+  height = height/2;
+  height = height-150;
+  console.log(preLoader,height);
+  preLoader.style.marginTop = height+"px";
+</script>
+
+
+
+   <script src="vendor/modernizr/modernizr.min.js"></script>
+   <script src="vendor/jquery/dist/jquery.min.js"></script>
+
+   <!-- <script src="vendor/jquery-and-moderniser-combined/jquery-and-moderniser-combined.js?v=1"></script> -->
+   <script src="vendor/jquery-ui/jquery-ui.min.js?v=1"></script>
+
+   <script src="vendor/angular/angular.min.js"></script>
+   <script type="text/javascript" src="vendor/ng-rollbar/ng-rollbar.js"></script>
+  <!--  <script type='text/javascript' src='vendor/ngInfiniteScroll/build/ng-infinite-scroll.js'></script>
+   <script type='text/javascript' src='vendor/angular-inview/angular-inview.js'></script> -->
+   <script type='text/javascript' src='vendor/rolbr-infintscrl-inview-combined/rolbr-infintscrl-inview-combined.js?v=<?php echo $vUp;?>'></script>
+
+
+
+   <script src="vendor/recaptcha/release/angular-recaptcha.js"></script>
+
+<!-- 
+   <script src="vendor/angular-route/angular-route.js"></script>
+   <script src="vendor/angular-route/ct-ui-router-extras.js"></script>
+   <script src="vendor/angular-cookies/angular-cookies.js"></script>
+   <script src="vendor/angular-animate/angular-animate.js"></script>
+   <script src="vendor/angular-touch/angular-touch.js"></script>
+   <script src="vendor/angular-sanitize/angular-sanitize.js"></script>
+   <script src="vendor/angular-resource/angular-resource.js"></script> -->
+   
+   <script src="vendor/rut-cok-anim-tch-sntz-rsrs-combined/rut-cok-anim-tch-sntz-rsrs-combined.js?v=<?php echo $vUp;?>"></script>
+
+
+  
+<!--    <script src="vendor/ngstorage/ngStorage.js"></script>
+   <script src="vendor/angular-ui-router/release/angular-ui-router.js"></script>
+   <script src="vendor/angular-ui-utils/ui-utils.js"></script> -->
+
+   <script src="vendor/storg-uiroutr-utils/storg-uiroutr-utils.js?v=<?php echo $vUp;?>"></script>
+
+
+
+
+ <!-- <script src="vendor/angular-translate/angular-translate.js"></script> -->
+<!--    <script src="vendor/angular-translate-loader-url/angular-translate-loader-url.js"></script>
+   <script src="vendor/angular-translate-loader-static-files/angular-translate-loader-static-files.js"></script>
+   <script src="vendor/angular-translate-storage-local/angular-translate-storage-local.js"></script>
+   <script src="vendor/angular-translate-storage-cookie/angular-translate-storage-cookie.js"></script> -->
+   <script src="vendor/angular-translates-combined/angular-translates-combined.js?v=<?php echo $vUp;?>"></script>
+
+   <!-- <script src="vendor/ckeditor/ckeditor.js"></script> -->
+  <!--  <link rel="stylesheet" type="text/css" href="vendor/angular-bootstrap-colorpicker-master/css/colorpicker.css">
+   <script src="vendor/angular-bootstrap-colorpicker-master/js/bootstrap-colorpicker-module.js"></script> -->
+   <!-- <script src="vendor/ckeditor/angular-ckeditor.js"></script>
+   <script src="vendor/oclazyload/dist/ocLazyLoad.min.js"></script> -->
+   <script src="vendor/combined-ckeditor-oclazyload-module.js"></script>
+
+<!--<script src="vendor/angular-bootstrap/ui-bootstrap-tpls.js"></script>
+   <script src="vendor/angular-loading-bar/build/loading-bar.js"></script>
+   <script src="vendor/angularjs-toaster/toaster.js"></script>
+   <script src="vendor/ng-tags-input/ng-tags-input.js"></script>
+   <script src="vendor/isteven-multi-select/js/isteven-multi-select.js"></script>
+   <script src="vendor/checklist/checklist-model.js"></script>
+   <script src="vendor/scroll/scroll.js"></script> -->
+   <script src="vendor/uibtstrp-lbar-tstr-inpttgs-mltslctchklst-scrl/uibtstrp-lbar-tstr-inpttgs-mltslctchklst-scrl.js?v=<?php echo $vUp;?>"></script>
+
+
+<!-- 
+   <link rel="stylesheet" href="vendor/angularjs-toaster/toaster.css">
+   <link rel="stylesheet" type="text/css" href="vendor/ng-tags-input/ng-tags-input.css">
+   <link rel="stylesheet" type="text/css" href="vendor/isteven-multi-select/css/isteven-multi-select.css"> -->
+   <link rel="stylesheet" type="text/css" href="vendor/uibtstrp-lbar-tstr-inpttgs-mltslctchklst-scrl/uibtstrp-lbar-tstr-inpttgs-mltslctchklst-scrl.css?v=<?php echo $vUp;?>">
+
+
+
+
+
+
+<!-- 
+   <script src="vendor/touch/touch-ponch.js"></script>
+   <script src="vendor/amazon/ng-file-upload.js"></script>
+   <script src="vendor/upload/angular-utf8-base64.js"></script>
+   <script src="vendor/stripe/stripe.js"></script>
+   <script src='vendor/htmltocanvas/html2canvas.js'></script> -->
+   <script src='vendor/combined-toouchpunch-ngfileupload-base64-stripe-html2canvas-module.js'></script>
+
+   <script src="vendor/amazon/aws-sdk-2.1.48.min.js"></script>
+<!-- moved to constants -->
+   
+  <!--   <script src='vendor/pdfmake-master/build/pdfmake.min.js'></script>
+    <script src='vendor/pdfmake-master/build/vfs_fonts.js'></script> -->
+
+  <!--   <script src="vendor/angular-moment-master/moment.min.js"></script>
+    <script src="vendor/angular-moment-master/angular-moment.min.js"></script>
+    <script src="vendor/angular-moment-master/moment-timezone.js"></script>
+    <script src="vendor/angular-moment-master/moment-timezone-with-data.js"></script> -->
+    <script src="vendor/angular-moment-master/moment-combined.js"></script>
+
+
+
+    <!-- <script src="vendor/angular-sweetalert/ngsweetalert/ngSweetAlert.js"></script> -->
+    <script src="vendor/angular-sweetalert/sweetalert/dist/sweetalert.min.js"></script>
+    <!-- moved to constants -->
+    <!-- below css file is combination of this oroginal and vendor/angularjs-slider/dist/rzslider.css and minified -->
+    <!-- <link rel="stylesheet" type="text/css" href="vendor/angular-sweetalert/sweetalert/dist/sweetalert.css"> -->
+<!-- moved to constants -->
+
+    <!-- <link rel="stylesheet" type="text/css" href="vendor/angularjs-slider/dist/rzslider.css"/> -->
+    <!-- <script src="vendor/angularjs-slider/dist/rzslider.min.js"></script> -->
+
+
+<!--     <script src="src/js/modules/adminlogin/adminlogin.module.js?v=1"></script>
+    <script src="src/js/modules/login/login.module.js?v=1"></script>
+    <script src="src/js/modules/transactionslog/transactionslog.module.js?v=1"></script>
+    <script src="src/js/modules/contacts/contacts.module.js?v=1"></script>
+    <script src="src/js/modules/donations/donations.module.js?v=1"></script>
+    <script src="src/js/modules/donationButton/donationButton.module.js?v=1"></script>
+    <script src="src/js/modules/ngoSettings/ngoSettings.module.js?v=1"></script>
+    <script src="src/js/modules/donationPackages/donationPackages.module.js?v=1"></script>
+    <script src="src/js/modules/permissions/permissions.module.js?v=1"></script>
+    <script src="src/js/modules/companysetup/companysetup.module.js?v=1"></script>
+    <script src="src/js/modules/budgets/budgets.module.js?v=1"></script>
+    <script src="src/js/modules/email/email.module.js?v=1"></script>
+    <script src="src/js/modules/archive/archive.module.js?v=1"></script>
+    <script src="src/js/modules/emailmarketing/emailmarketing.module.js?v=1"></script> -->
+
+    <script src="src/js/modules/common-modules.js?v=<?php echo $vUp;?>"></script>
+
+   <!-- endbuild-->
+   <script src="src/js/urls.js?v=<?php echo $vUp;?>"></script>
+
+<!--    <script type="text/javascript" src="vendor/angular-lodash/angular-lodash.js"></script>
+ -->   
+   <script src="src/js/app.module.js?v=<?php echo $vUp;?>"></script>
+<!--    <script src="src/js/modules/routes/routes.provider.js?v=1"></script>
+   <script src="src/js/modules/routes/routes.config.js?v=1"></script>
+   <script src="src/js/modules/routes/routes.run.js?v=1"></script>
+   <script src="src/js/modules/routes/vendor.constants.js?v=1"></script> -->
+   
+   <script src="src/js/modules/routes/combined-routes-module.js?v=<?php echo $vUp;?>"></script>
+
+<!--    
+   <script src="src/js/constants/constants.js?v=1"></script>
+   <script src="src/js/directives/permissions.Directive.js?v=1"></script>
+   <script src="src/js/modules/permissions/controllers/checkPermissionController.controller.js?v=1"></script>
+   <script src="src/js/directives/checkPermissions.Directive.js?v=1"></script>
+   <script src="src/js/modules/permissions/controllers/specificModulePermissions.controller.js?v=1"></script>
+   <script src="src/js/directives/specificModulePermissions.Directive.js?v=1"></script>
+   
+   <script src="src/js/directives/scrollable.directive.js"></script>
+   <script src="src/js/custom/custom.js?v=1"></script>
+   <script src="src/js/providers/syncronizartion.js?v=1"></script>
+   <script src="src/js/services/passwordservices.js?v=1"></script> -->
+
+   <script src="src/js/combined-constants-directives-perms-prov-serv-module.js?v=<?php echo $vUp;?>"></script>
+   
+   <script src="src/js/modules/companysetup/services/setupService.js?v=<?php echo $vUp;?>"></script>
+
+   <script src="src/js/modules/companysetup/services/setupService.js?v=<?php echo $vUp;?>"></script>
+
+
+
+  <!--  <script src="src/js/modules/colors/colors.constant.js"></script>
+   <script src="src/js/modules/colors/colors.run.js"></script>
+   <script src="src/js/modules/colors/colors.service.js"></script> -->
+
+   <script src="src/js/modules/colors/combined-colors-module.min.js?v=<?php echo $vUp;?>"></script>
+
+
+
+
+
+  <!--  <script src="src/js/modules/common/directives/animate-enabled.directive.js"></script>
+   <script src="src/js/modules/common/directives/chained-animation.directive.js"></script>
+   <script src="src/js/modules/common/directives/check-all-table.directive.js"></script>
+   <script src="src/js/modules/common/directives/fullscreen.directive.js"></script>
+   <script src="src/js/modules/common/directives/reset-key.directive.js"></script>
+   <script src="src/js/modules/common/filters/title-case.filter.js"></script>
+   <script src="src/js/modules/common/services/browser-detection.service.js"></script>
+   <script src="src/js/modules/common/services/support.service.js"></script>
+   <script src="src/js/modules/common/services/touch-drag.service.js"></script> -->
+
+   <script src="src/js/modules/common/combined-common-module.min.js?v=<?php echo $vUp;?>"></script>
+
+
+
+
+  
+
+
+  <script src="src/js/modules/adminlogin/services/admindata.js?v=<?php echo $vUp;?>"></script>
+  
+<!--    <script src="src/js/modules/core/config.js?v=1"></script>
+   <script src="src/js/modules/core/constants.js?v=1"></script>
+   <script src="src/js/modules/core/core.controller.js?v=1"></script>
+   <script src="src/js/modules/core/datepicker.controller.js?v=1"></script>
+   <script src="src/js/modules/core/panels.controller.js?v=1"></script>
+   <script src="src/js/modules/core/paymentNotifyController.controller.js?v=1"></script>
+   <script src="src/js/modules/core/core.run.js?v=1"></script>
+ -->
+  <script src="src/js/modules/core/combined-core-module.js?v=<?php echo $vUp;?>"></script>
+
+
+<!--   <script src="src/js/modules/dashboard/dashboard.controller.js?v=1"></script>
+  <script src="src/js/modules/dashboard/constantcontact.controller.js?v=1"></script> -->
+  <script src="src/js/modules/dashboard/combined-dashboard-module.min.js?v=<?php echo $vUp;?>"></script>
+
+
+
+
+
+  <!--  <script src="src/js/modules/icons/climacon.directive.js"></script>
+   <script src="src/js/modules/layermorph/layer-morph.directive.js"></script>
+   <script src="src/js/modules/layermorph/layer-morph.service.js"></script>
+   <script src="src/js/modules/layout/header-nav.controller.js"></script>
+   <script src="src/js/modules/layout/ui-sidebar.directive.js"></script>
+   <script src="src/js/modules/loadingbar/loadingbar.config.js"></script>
+   <script src="src/js/modules/loadingbar/loadingbar.run.js"></script> -->
+   <script src="src/js/modules/combined-icons-layer-lahout-lbar-module.min.js"></script>
+
+
+
+  <!--  <script src="src/js/modules/login/services/login.js"></script>
+   <script src="src/js/modules/login/controllers/login.controller.js"></script> -->
+   <script src="src/js/modules/login/combined-login-module.js?v=<?php echo $vUp;?>"></script>
+
+
+
+<!--    <script src="src/js/modules/user/paymentCreditCardController.controller.js"></script>
+   <script src="src/js/modules/user/payment.js"></script>
+   <script src="src/js/modules/register/register.controller.js"></script>.
+   <script src="src/js/modules/register/registerpayment.controller.js"></script>
+   <script src="src/js/modules/search/globalSearch.controller.js"></script> -->
+
+   <script src="src/js/modules/combined-user-register-search-module.min.js?v=<?php echo $vUp;?>"></script>
+
+
+
+
+
+
+  <!--  <script src="src/js/modules/charts/flot-chart-options.services.js"></script>
+   <script src="src/js/modules/charts/flot-chart.controller.js"></script>
+   <script src="src/js/modules/charts/flot-chart.directive.js"></script> -->
+
+   <script src="src/js/modules/charts/combined-charts-module.min.js?v=<?php echo $vUp;?>"></script>
+
+
+
+   <script src="src/js/modules/ripple/ripple.directive.js"></script>
+   
+   
+
+
+   <!-- <script src="src/js/modules/settings/settings.controller.js?v=1"></script>
+   <script src="src/js/modules/settings/settings.service.js?v=1"></script>
+   <script src="src/js/modules/translator/translator.config.js"></script>
+   <script src="src/js/modules/translator/translator.service.js"></script> -->
+   <script src="src/js/modules/combined-settings-translator-module.min.js"></script>
+
+
+
+   <script src="app/js/templates.js"></script>
+   
+
+
+
+   <script>
+   function touchHandler(event) {
+    var touch = event.changedTouches[0];
+
+    var simulatedEvent = document.createEvent("MouseEvent");
+        simulatedEvent.initMouseEvent({
+        touchstart: "mousedown",
+        touchmove: "mousemove",
+        touchend: "mouseup"
+    }[event.type], true, true, window, 1,
+        touch.screenX, touch.screenY,
+        touch.clientX, touch.clientY, false,
+        false, false, false, 0, null);
+
+    touch.target.dispatchEvent(simulatedEvent);
+    event.preventDefault();
+   }
+
+    function init() {
+        document.addEventListener("touchstart", touchHandler, true);
+        document.addEventListener("touchmove", touchHandler, true);
+        document.addEventListener("touchend", touchHandler, true);
+        document.addEventListener("touchcancel", touchHandler, true);
+    }
+
+
+    </script>
+    <script>
+      // var hash = window.location.hash;
+      // if (hash == '#/page/register' || hash == '#/page/registerpayment') {
+      //   document.getElementById('footer').style.display = 'block';
+      // }else {
+      //   document.getElementById('footer').style.display = 'none';
+      // }
+    </script>
+    
+   <!-- <script src="src/js/directives/scrollable.directive.js"></script> -->
+   <style>
+      .app-container > footer{  position: inherit; float:left; bottom:0;}
+   </style>
+   <!-- endbuild-->
+</body>
+
+</html>
